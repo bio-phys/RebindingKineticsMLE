@@ -1,6 +1,6 @@
 # RebindingKineticsMLE
 
-This package provides a robust framework to analyze rupture force data from single-molecule force spectroscopy experiments involving multiple unbinding-rebinding events.  It makes use of numerically efficient maximum and asymptotically exact likelihood estimators for the parameters of the force-dependent unbinding and rebinding Bell-rates.  
+This package provides a robust framework to analyze pulling traces from single-molecule force spectroscopy experiments involving multiple unbinding-rebinding events.  It makes use of numerically efficient maximum and asymptotically exact likelihood estimators for the parameters of the force-dependent unbinding and rebinding Bell-like rates.  
 
 For more details on the theoretical framework, please refer to the associated preprint:
 > J. T. Bullerjahn and G. Hummer, "Rebinding kinetics from single-molecule force spectroscopy experiments close to equilibrium", *arXiv:2205.05991* (2022). 
@@ -23,3 +23,15 @@ Users of older software versions may need to wrap the contents of the brackets w
 
 
 ## Usage
+
+### Importing data
+
+
+
+### Parameter and error estimation
+
+The Bell rate has two parameters, a rate and a length scale.  We therefore have four parameters, `Δx_off`, `k_off`, `Δx_on` and `k_on`, which can be estimated using the `MLE_estimator` function:
+```julia
+estimates, errors = MLE_estimator(data,Δt)
+```
+Here, `Δt` denotes the constant time step between two subsequent measurements.  
