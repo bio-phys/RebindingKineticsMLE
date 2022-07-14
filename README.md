@@ -24,7 +24,9 @@ Users of older versions of Julia may need to wrap the contents of the brackets w
 
 ## Usage
 
-A detailed example demonstrating how to apply the code can be found in [the examples directory](examples).  
+A detailed example on how to apply the code and compare its output to rate maps can be found in [the examples directory](examples).  
+
+
 
 ### Importing data
 
