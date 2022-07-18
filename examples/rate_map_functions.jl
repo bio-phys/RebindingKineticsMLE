@@ -21,7 +21,7 @@ function rate_map(b_to_u_forces,u_to_b_forces,dF,F_offset,M,N_bins)
         t = histogram.edges[1][n+1]/dF
         N_b = Ni_trajectories(b_to_u_times,u_to_b_times,M,t)
         if C[n] > 0 && N_b > 0
-            append!(b_to_u_rate_map,[[ (F_0 + (n-1/2)*ΔF) C[n]*dF/ΔF/N_b ]])
+            append!(b_to_u_rate_map,[[ (F_0 + (n-1/2)*ΔF) C[n]*dF/ΔF/N_b exp(sqrt(1/C[n] + 1/N_b)) ]])
         end
     end
     histogram = fit(Histogram, u_to_b_forces, closed=:left, nbins=N_bins)
@@ -34,7 +34,7 @@ function rate_map(b_to_u_forces,u_to_b_forces,dF,F_offset,M,N_bins)
         t = (histogram.edges[1][n+1] + F_offset)/dF
         N_u = Ni_trajectories(u_to_b_times,b_to_u_times,0,t)
         if C[n] > 0 && N_u > 0
-            append!(u_to_b_rate_map,[[ (F_0 + (n-1/2)*ΔF) C[n]*dF/ΔF/N_u ]])
+            append!(u_to_b_rate_map,[[ (F_0 + (n-1/2)*ΔF) C[n]*dF/ΔF/N_u exp(sqrt(1/C[n] + 1/N_u)) ]])
         end
     end
     return vcat(b_to_u_rate_map...), vcat(u_to_b_rate_map...)
